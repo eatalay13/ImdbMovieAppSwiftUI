@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		1E29BBFE279363A0009F46CB /* ImdbMovieAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29BBFD279363A0009F46CB /* ImdbMovieAppApp.swift */; };
-		1E29BC00279363A0009F46CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29BBFF279363A0009F46CB /* ContentView.swift */; };
+		1E29BC00279363A0009F46CB /* FilmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29BBFF279363A0009F46CB /* FilmListView.swift */; };
 		1E29BC02279363A1009F46CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E29BC01279363A1009F46CB /* Assets.xcassets */; };
 		1E29BC05279363A1009F46CB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E29BC04279363A1009F46CB /* Preview Assets.xcassets */; };
+		1E29BC1127936906009F46CB /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E29BC1027936906009F46CB /* Film.swift */; };
+		1EF7BB1227941AC2004EB346 /* DownloaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF7BB1127941AC2004EB346 /* DownloaderClient.swift */; };
+		1EF7BB1427943999004EB346 /* FilmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF7BB1327943999004EB346 /* FilmViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E29BBFA279363A0009F46CB /* ImdbMovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImdbMovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E29BBFD279363A0009F46CB /* ImdbMovieAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImdbMovieAppApp.swift; sourceTree = "<group>"; };
-		1E29BBFF279363A0009F46CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1E29BBFF279363A0009F46CB /* FilmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListView.swift; sourceTree = "<group>"; };
 		1E29BC01279363A1009F46CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E29BC04279363A1009F46CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1E29BC1027936906009F46CB /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		1EF7BB1127941AC2004EB346 /* DownloaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderClient.swift; sourceTree = "<group>"; };
+		1EF7BB1327943999004EB346 /* FilmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,11 @@
 		1E29BBFC279363A0009F46CB /* ImdbMovieApp */ = {
 			isa = PBXGroup;
 			children = (
-				1E29BBFD279363A0009F46CB /* ImdbMovieAppApp.swift */,
-				1E29BBFF279363A0009F46CB /* ContentView.swift */,
+				1EF7BB1027941AB1004EB346 /* Service */,
+				1E29BC0C2793683E009F46CB /* Model */,
+				1E29BC0E2793684C009F46CB /* View */,
+				1E29BC0D27936845009F46CB /* ViewModel */,
+				1E29BC0B27936837009F46CB /* App */,
 				1E29BC01279363A1009F46CB /* Assets.xcassets */,
 				1E29BC03279363A1009F46CB /* Preview Content */,
 			);
@@ -65,6 +74,46 @@
 				1E29BC04279363A1009F46CB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1E29BC0B27936837009F46CB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1E29BBFD279363A0009F46CB /* ImdbMovieAppApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1E29BC0C2793683E009F46CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E29BC1027936906009F46CB /* Film.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E29BC0D27936845009F46CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1EF7BB1327943999004EB346 /* FilmViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1E29BC0E2793684C009F46CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E29BBFF279363A0009F46CB /* FilmListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EF7BB1027941AB1004EB346 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1EF7BB1127941AC2004EB346 /* DownloaderClient.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +186,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E29BC00279363A0009F46CB /* ContentView.swift in Sources */,
+				1E29BC00279363A0009F46CB /* FilmListView.swift in Sources */,
+				1E29BC1127936906009F46CB /* Film.swift in Sources */,
+				1EF7BB1427943999004EB346 /* FilmViewModel.swift in Sources */,
 				1E29BBFE279363A0009F46CB /* ImdbMovieAppApp.swift in Sources */,
+				1EF7BB1227941AC2004EB346 /* DownloaderClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

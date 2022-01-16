@@ -11,7 +11,7 @@ import SwiftUI
 struct ImdbMovieAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FilmListView()
         }
     }
 }
