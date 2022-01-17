@@ -8,16 +8,30 @@
 import SwiftUI
 
 struct FilmListView: View {
-    @ObservedObject var filmListViewModel : FilmListViewModel
+    @ObservedObject private var filmListViewModel : FilmListViewModel
+    
+    @State private var searchKey = ""
     
     init() {
         self.filmListViewModel = FilmListViewModel()
-        self.filmListViewModel.searchFilm(search: "Titanic")
     }
     
     var body: some View {
-        List(filmListViewModel.films,id: \.imdbId) { film in
-            Text(film.title)
+        NavigationView {
+            
+            VStack {
+                TextField("Aracanacak Film",text: self.$searchKey,onEditingChanged: {_ in},onCommit: {
+                    self.filmListViewModel.searchFilm(search: self.searchKey)
+                }).padding()
+                    .textFieldStyle(.roundedBorder)
+            
+                List(filmListViewModel.films,id: \.imdbId) { film in
+                    NavigationLink(destination: FilmDetailView(filmId: film.imdbId)) {
+                        FilmCard(film: film)
+                    }
+                    
+                }.navigationTitle("Filmler")
+            }
         }
     }
 }

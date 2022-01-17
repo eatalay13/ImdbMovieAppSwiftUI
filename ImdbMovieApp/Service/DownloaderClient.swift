@@ -11,7 +11,10 @@ import SwiftUI
 class DownloaderClient {
     
     func searchFilm(search : String, completion: @escaping (Result<[Film]?,DownloaderError>)-> Void) {
-        guard let url = URL(string: "https://www.omdbapi.com/?s=\(search)&apikey=8e58179f") else {
+        let urlFormat = search.trimmingCharacters(in: .whitespacesAndNewlines)
+            .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        guard let url = URL(string: "https://www.omdbapi.com/?s=\(urlFormat)&apikey=8e58179f") else {
             return completion(.failure(.wrongUrl))
         }
         
@@ -27,6 +30,29 @@ class DownloaderClient {
             
             return completion(.success(apiFilms.films))
 
+        }.resume()
+    }
+    
+    func filmDetail(filmId : String, completion: @escaping (Result<FilmDetail?,DownloaderError>)-> Void) {
+        let urlFormat = filmId.trimmingCharacters(in: .whitespacesAndNewlines)
+            .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        guard let url = URL(string: "https://www.omdbapi.com/?i=\(urlFormat)&apikey=8e58179f") else {
+            return completion(.failure(.wrongUrl))
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            guard let data = data , error == nil else {
+                return completion(.failure(.emptyData))
+            }
+            
+            guard let apiFilm = try? JSONDecoder().decode(FilmDetail.self, from: data) else {
+                return completion(.failure(.dataNotProcess))
+            }
+            
+            return completion(.success(apiFilm))
+            
         }.resume()
     }
 }

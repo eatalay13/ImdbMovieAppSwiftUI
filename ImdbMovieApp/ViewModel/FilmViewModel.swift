@@ -9,7 +9,7 @@ import Foundation
 
 class FilmListViewModel : ObservableObject {
     
-    @Published var  films = [Film]()
+    @Published var films = [Film]()
     
     private let _downloaderClient = DownloaderClient()
     
