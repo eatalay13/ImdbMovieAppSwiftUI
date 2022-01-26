@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct FilmCard: View {
-    var film : Film
+    var film: Film
     var body: some View {
-        HStack{
+        HStack {
             CustomImageView(urlString: film.poster)
-            
-            VStack(alignment: .leading){
+                .frame(width: 100, height: 150)
+
+            VStack(alignment: .leading) {
                 Text(film.title)
                     .font(.title3)
+                    .bold()
                     .foregroundColor(.blue)
-                
+
                 Text(film.year)
                     .foregroundColor(.orange)
             }
